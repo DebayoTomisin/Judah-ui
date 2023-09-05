@@ -10,13 +10,13 @@ import tsConfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
     resolve: {
         alias: {
-            "@": resolve(__dirname, "src"),
+            "/@": resolve(__dirname, "src"),
         },
     },
 
     build: {
         lib: {
-            entry: resolve(__dirname, "src/components/index.ts"),
+            entry: resolve(__dirname, "src", "index.ts"),
             name: "judahui",
             formats: ["es", "cjs", "iife", "umd"],
             fileName: "judahui",
