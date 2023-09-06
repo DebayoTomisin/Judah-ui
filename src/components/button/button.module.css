@@ -1,3 +1,31 @@
-.primaryStyle {
-    width: 100px;
+.judahuiPrimaryBtn {
+    @apply lib-w-32 lib-bg-reed-purple lib-border-1 lib-border-transparent lib-border-1 lib-border-solid lib-py-2 lib-px-5 lib-cursor-pointer lib-rounded-md lib-text-white lib-text-base lib-font-medium lib-transition-colors lib-duration-300 hover:lib-border-custom-purple;
+}
+
+.judahuismBtn {
+    @apply lib-w-24;
+}
+
+.judahuimdBtn {
+    @apply lib-w-32;
+}
+
+.judahuilgBtn {
+    @apply lib-w-40;
+}
+
+.judahuixlBtn {
+    @apply lib-w-44;
+}
+
+.judahui2xlBtn {
+    @apply lib-w-48;
+}
+
+.judahuiblockBtn {
+    @apply lib-w-full !important;
+}
+
+.judahuidisableBtn {
+    @apply lib-cursor-not-allowed lib-bg-slate-600 hover:lib-border-none;
 }
