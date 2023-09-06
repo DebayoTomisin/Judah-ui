@@ -6,6 +6,7 @@ declare const styles: {
   readonly "judahuixlBtn": string;
   readonly "judahui2xlBtn": string;
   readonly "judahuiblockBtn": string;
+  readonly "judahuidisableBtn": string;
 };
 export = styles;
 

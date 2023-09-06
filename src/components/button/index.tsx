@@ -6,6 +6,7 @@ import {
     judahuixlBtn,
     judahui2xlBtn,
     judahuiblockBtn,
+    judahuidisableBtn,
 } from "./button.module.css";
 
 export type ButtonSize = "sm" | "md" | "lg" | "xl" | "2xl";
@@ -15,7 +16,7 @@ export interface ButtonProps {
      * This is the content of the button, which could either a text or a react node.
      */
 
-    children: string | JSX.Element;
+    children: string | React.ReactNode;
 
     /**
      * A callback function that is called when the button is clicked
@@ -113,12 +114,15 @@ export const Button = ({
                 typeof className === "string" ? className : ""
             } ${judahuiPrimaryBtn} ${selectedSize(size)} ${
                 block ? judahuiblockBtn : ""
-            }`}
+            } ${isDisabled ? judahuidisableBtn : ""}
+            `}
             onClick={handleClick}
             type={type}
             disabled={isDisabled || isLoading}
         >
-            {children}
+            {isLoading && ["sm", "md", "lg"].includes(size) ? null : children}
+
+            <span className="lib-ml-2">{isLoading && "Loading..."}</span>
 
             {iconRight && <div className="lib-ml-4">{iconRight}</div>}
         </button>
