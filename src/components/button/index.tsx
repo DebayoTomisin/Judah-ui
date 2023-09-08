@@ -124,7 +124,7 @@ export const Button: React.FC<ButtonProps> = ({
             {isLoading && ["sm", "md", "lg"].includes(size) ? null : children}
 
             <span className="lib-ml-2">
-                {isLoading && <Loader className="spinner" />}
+                {isLoading && <Loader className={spinner} />}
             </span>
 
             {iconRight && <div className="lib-ml-4">{iconRight}</div>}
