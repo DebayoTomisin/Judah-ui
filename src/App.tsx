@@ -21,7 +21,9 @@ function App() {
             </div>
             <h1>Vite + React</h1>
             <div>
-                <Button size="xl">move on</Button>
+                <Button size="xl" isLoading>
+                    move on
+                </Button>
             </div>
         </>
     );
