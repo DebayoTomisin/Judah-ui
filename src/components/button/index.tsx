@@ -7,7 +7,9 @@ import {
     judahui2xlBtn,
     judahuiblockBtn,
     judahuidisableBtn,
+    spinner,
 } from "./button.module.css";
+import { Loader } from "../loader";
 
 export type ButtonSize = "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -72,57 +74,58 @@ export interface ButtonProps {
      * This is is a prop to request whether the button fills up its container
      */
     block?: boolean | string;
+
+    /** Other unknown props */
+
+    [x: string]: unknown;
 }
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
     children,
     handleClick,
-    className,
-    size = "md",
+    size = "lg",
     iconRight,
     block,
     isLoading,
     isDisabled,
     type = "button",
+    ...props
 }: ButtonProps) => {
-    const selectedSize = (size: ButtonSize) => {
-        switch (size) {
-            case "sm":
-                return judahuismBtn;
-                break;
-            case "md":
-                return judahuimdBtn;
-                break;
-            case "lg":
-                return judahuilgBtn;
-                break;
-            case "xl":
-                return judahuixlBtn;
-                break;
-            case "2xl":
-                return judahui2xlBtn;
-                break;
-            default:
-                return judahuimdBtn;
-        }
+    const btn = {
+        sizes: {
+            sm: judahuismBtn,
+            md: judahuimdBtn,
+            lg: judahuilgBtn,
+            xl: judahuixlBtn,
+            "2xl": judahui2xlBtn,
+        },
+        theme: {
+            primary: "",
+            secondary: "",
+            tertiary: "",
+        },
     };
 
     return (
         <button
-            className={`
-            ${
-                typeof className === "string" ? className : ""
-            } ${judahuiPrimaryBtn} ${selectedSize(size)} ${
-                block ? judahuiblockBtn : ""
-            } ${isDisabled ? judahuidisableBtn : ""}
-            `}
+            className={[
+                judahuiPrimaryBtn,
+                btn.sizes[size],
+                block ? judahuiblockBtn : "",
+                isDisabled ? judahuidisableBtn : "",
+            ]
+                .join(" ")
+                .trim()}
             onClick={handleClick}
             type={type}
             disabled={isDisabled || isLoading}
+            {...props}
         >
             {isLoading && ["sm", "md", "lg"].includes(size) ? null : children}
 
-            <span className="lib-ml-2">{isLoading && "Loading..."}</span>
+            <span className="lib-ml-2">
+                {isLoading && <Loader className={spinner} />}
+            </span>
 
             {iconRight && <div className="lib-ml-4">{iconRight}</div>}
         </button>

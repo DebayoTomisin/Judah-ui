@@ -29,3 +29,20 @@
 .judahuidisableBtn {
     @apply lib-cursor-not-allowed lib-bg-slate-600 hover:lib-border-none;
 }
+
+.spinner {
+    @apply lib-h-5 lib-w-5;
+    animation-name: spin;
+    animation-duration: 300ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
